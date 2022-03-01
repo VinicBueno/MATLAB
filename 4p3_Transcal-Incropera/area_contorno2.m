@@ -1,11 +1,10 @@
-function [Aglobal]=area_contorno(P,E,T,n_bc)
+function [Aglobal,Aglobalx,Aglobaly]=area_contorno2(P,E,n_bc)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Rotina escrita pelo Prof. Fábio Alfaia da Cunha, Email:fabioalfaia@unb.br
 % Para disciplina Transferência de Calor, da Universidade de Brasília.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 if size(P,1)>size(P,2),P=P';end
 if size(E,1)>size(E,2),E=E';end
-if size(T,1)>size(T,2),T=T';end
 if size(n_bc,1)>size(n_bc,2),n_bc=n_bc';end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 ind1=ismember(E(1,:),n_bc);
@@ -29,5 +28,23 @@ Aglobal=zeros(length(P),1);     %Criação do vetor de Area global
 for i=1:length(no_c1)
 Aglobal(no_c1(i))=A_bc(i)+Aglobal(no_c1(i));
 Aglobal(no_c2(i))=A_bc(i)+Aglobal(no_c2(i));
+end
+%vetor de áreas local = Comprimento do segmento de contorno y
+
+
+% início - montagem do vetor de áreas global
+Aglobalx=zeros(length(P),1);     %Criação do vetor de Area global
+for i=1:length(no_c1)
+Aglobalx(no_c1(i))=nx_bc(i)+Aglobalx(no_c1(i));
+Aglobalx(no_c2(i))=nx_bc(i)+Aglobalx(no_c2(i));
+end
+%vetor de áreas local = Comprimento do segmento de contorno y
+
+
+% início - montagem do vetor de áreas global
+Aglobaly=zeros(length(P),1);     %Criação do vetor de Area global
+for i=1:length(no_c1)
+Aglobaly(no_c1(i))=ny_bc(i)+Aglobaly(no_c1(i));
+Aglobaly(no_c2(i))=ny_bc(i)+Aglobaly(no_c2(i));
 end
 %vetor de áreas local = Comprimento do segmento de contorno y
