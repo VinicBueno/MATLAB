@@ -1,0 +1,4 @@
+Para o sistema cujo função de transferência representa-se abaixo, calcule o 
+sobressinal, os tempos de subida , de pico e de acomodação, bem como a
+frequência natural e a porcentagem de sobressianl.
+Escreva o problema no Matlab que atenda o solicitado.
